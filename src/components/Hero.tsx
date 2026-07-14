@@ -88,18 +88,19 @@ export default function Hero() {
       <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        {/* Left Column: Bio & Title */}
-        <div className="lg:col-span-7 space-y-8">
-          <div className="space-y-4">
+      <div className="max-w-5xl mx-auto px-6 w-full relative z-10 flex flex-col items-center text-center">
+        {/* Bio & Title */}
+        <div className="space-y-8 flex flex-col items-center max-w-3xl">
+          <div className="space-y-6 flex flex-col items-center">
             {/* Status Pill */}
             <div className="gsap-hero-pill inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/25 text-blue-400 text-xs font-mono font-semibold tracking-wider uppercase">
               <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
               Available for Hyderabad & Remote Projects
             </div>
 
-            <h1 className="gsap-hero-title text-5xl md:text-6xl lg:text-7xl font-sans font-extrabold tracking-tight text-white leading-none">
-              Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-500 to-blue-400 text-glow">{portfolioData.name}</span>
+            <h1 className="gsap-hero-title text-5xl md:text-6xl lg:text-7xl font-sans font-extrabold tracking-tight text-white leading-tight">
+              Hi, I'm <br className="hidden sm:block" />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-500 to-blue-400 text-glow">{portfolioData.name}</span>
             </h1>
 
             <h2 className="gsap-hero-title text-xl md:text-2xl lg:text-3xl font-sans font-medium text-zinc-300">
@@ -107,21 +108,21 @@ export default function Hero() {
             </h2>
           </div>
 
-          <p className="gsap-hero-title text-base md:text-lg text-zinc-400 leading-relaxed max-w-xl font-sans">
+          <p className="gsap-hero-title text-base md:text-lg text-zinc-400 leading-relaxed font-sans">
             {portfolioData.summary}
           </p>
 
           {/* Quick Contact Grid */}
-          <div className="gsap-hero-title grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-lg text-sm text-zinc-400 font-sans border-t border-zinc-900 pt-6">
-            <div className="flex items-center gap-3 hover:text-white transition-colors">
+          <div className="gsap-hero-title flex flex-wrap justify-center gap-6 text-sm text-zinc-400 font-sans border-t border-zinc-900 pt-8 w-full">
+            <div className="flex items-center gap-2 hover:text-white transition-colors">
               <MapPin className="w-4 h-4 text-blue-400 shrink-0" />
               <span>{portfolioData.location}</span>
             </div>
-            <a href={`mailto:${portfolioData.email}`} className="flex items-center gap-3 hover:text-blue-400 transition-colors">
+            <a href={`mailto:${portfolioData.email}`} className="flex items-center gap-2 hover:text-blue-400 transition-colors">
               <Mail className="w-4 h-4 text-blue-400 shrink-0" />
               <span>{portfolioData.email}</span>
             </a>
-            <a href={`tel:${portfolioData.phone}`} className="flex items-center gap-3 hover:text-blue-400 transition-colors">
+            <a href={`tel:${portfolioData.phone}`} className="flex items-center gap-2 hover:text-blue-400 transition-colors">
               <Phone className="w-4 h-4 text-blue-400 shrink-0" />
               <span>{portfolioData.phone}</span>
             </a>
@@ -129,7 +130,7 @@ export default function Hero() {
               href={portfolioData.linkedinUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 hover:text-blue-400 transition-colors"
+              className="flex items-center gap-2 hover:text-blue-400 transition-colors"
             >
               <Linkedin className="w-4 h-4 text-blue-400 shrink-0" />
               <span>LinkedIn Profile</span>
@@ -137,7 +138,7 @@ export default function Hero() {
           </div>
 
           {/* Action CTAs */}
-          <div className="gsap-hero-title flex flex-wrap gap-4 pt-4">
+          <div className="gsap-hero-title flex flex-wrap justify-center gap-4 pt-4">
             <button
               onClick={() => scrollToSection('#projects')}
               className="flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-sans font-semibold text-base transition-all duration-200 shadow-md shadow-blue-600/10 cursor-pointer"
@@ -154,26 +155,24 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right Column: Key Interactive Technical Metrics Card */}
-        <div className="lg:col-span-5 flex flex-col gap-6 lg:pl-6">
+        {/* Technical Metrics Card */}
+        <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-6 pt-16">
           {metrics.map((metric, idx) => (
             <div
               key={idx}
-              className="gsap-metric-card glass-card glass-card-hover p-6 rounded-2xl flex items-start gap-5"
+              className="gsap-metric-card glass-card glass-card-hover p-6 rounded-2xl flex flex-col items-center text-center gap-4"
             >
               <div className="p-3.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80 flex items-center justify-center shrink-0">
                 {metric.icon}
               </div>
               <div className="space-y-1">
-                <div className="flex items-baseline gap-2">
-                  <span className="text-3xl font-mono font-extrabold text-white tracking-tight">
-                    {metric.value}
-                  </span>
-                  <span className="text-sm font-sans font-semibold text-zinc-300">
-                    {metric.label}
-                  </span>
+                <div className="text-3xl font-mono font-extrabold text-white tracking-tight">
+                  {metric.value}
                 </div>
-                <p className="text-xs text-zinc-400 font-sans leading-relaxed">
+                <div className="text-sm font-sans font-semibold text-zinc-300 mt-1">
+                  {metric.label}
+                </div>
+                <p className="text-xs text-zinc-400 font-sans leading-relaxed mt-2">
                   {metric.description}
                 </p>
               </div>
